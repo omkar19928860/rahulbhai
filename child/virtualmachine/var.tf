@@ -1,0 +1,22 @@
+variable "vms" {
+  description = "Map of Windows Virtual Machines to create"
+  type = map(object({
+    name                = string
+    resource_group_name = string
+    location            = string
+    size                = string
+    nic_name           = string
+
+    os_disk = object({
+      caching              = string
+      storage_account_type = string
+    })
+
+    source_image_reference = object({
+      publisher = string
+      offer     = string
+      sku       = string
+      version   = string
+    })
+  }))
+}
